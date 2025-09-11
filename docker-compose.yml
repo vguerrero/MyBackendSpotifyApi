@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: myspotifydb
+      MYSQL_USER: victor
+      MYSQL_PASSWORD: tu_password
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  springboot-app:
+    build: .
+    container_name: springboot-app
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    environment:
+      # Debug
+      JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+
+      # DB
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/myspotifydb
+      SPRING_DATASOURCE_USERNAME: victor
+      SPRING_DATASOURCE_PASSWORD: tu_password
+
+      # Spotify API credentials
+      SPOTIFY_CLIENT_ID: 0386786610414f069232f3ad7dc97045
+      SPOTIFY_CLIENT_SECRET: aae7205ffaa3497e81f842d51df9b65c
+      SPOTIFY_EXPIRY_TIME: 3600
+      SPOTIFY_ACCOUNT_BASEURL: https://accounts.spotify.com/api/token
+      SPOTIFY_API_BASEURL: https://api.spotify.com/v1
+
+      # Swagger
+      SPRINGDOC_API_DOCS_PATH: /api-docs
+      SPRINGDOC_SWAGGER_UI_PATH: /swagger-ui.html
