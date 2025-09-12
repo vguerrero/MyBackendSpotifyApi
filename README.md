@@ -38,7 +38,12 @@ all steps are presented in the evidence images
 - http://localhost:8080/api-docs
 - I made all my testing using swagger web app
 
-# Evidence folder
-[Evidence_docs](Evidence_docs)
+# production demo environment
+- mysql database allocated in https://railway.com/
+- backend api: https://mybackendspotifyapi.onrender.com
+- swagger: https://mybackendspotifyapi.onrender.com/swagger-ui/index.html
+- open-api-doc: https://mybackendspotifyapi.onrender.com/api-docs
+- important note: backend service api is deployed in render https://dashboard.render.com/
+render put the api in sleep mode after 15 min with no activity, check swagger html is ready to test the app
 
 # Thanks :)
