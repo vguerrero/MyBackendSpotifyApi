@@ -36,7 +36,7 @@ all steps are presented in the evidence images
 # swagger and openapi endpoints for testing
 - http://localhost:8080/swagger-ui/index.htm
 - http://localhost:8080/api-docs
-- I made all my testing using swagger web app
+
 
 # production demo environment
 - mysql database allocated in https://railway.com/
@@ -44,6 +44,8 @@ all steps are presented in the evidence images
 - swagger: https://mybackendspotifyapi.onrender.com/swagger-ui/index.html
 - open-api-doc: https://mybackendspotifyapi.onrender.com/api-docs
 - important note: backend service api is deployed in render https://dashboard.render.com/
-render put the api in sleep mode after 15 min with no activity, check swagger html is ready to test the app
+render put the api in sleep mode after 15 min with no activity as free account, check swagger html is ready to test the app
+- front app is deployed here: https://my-front-end-spotify-app.vercel.app/ , using vercel
 
+# if you wanna know other information let me know
 # Thanks :)
