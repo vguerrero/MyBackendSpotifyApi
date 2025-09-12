@@ -48,7 +48,7 @@ public class TrackServiceImpl implements TrackService {
      * @return TrackDTO
      */
     @Override
-    @CacheEvict(value = {"trackMetadata", "allTracks", "coverImages"}, allEntries = true)
+    @CacheEvict(value = {"trackMetadata", "allTracks"}, allEntries = true)
     public TrackDTO save(String isrc, String token) {
         log.info("saving track: " + isrc);
         if (isrc.isEmpty()) throw new IllegalArgumentException("isrc field is mandatory");
