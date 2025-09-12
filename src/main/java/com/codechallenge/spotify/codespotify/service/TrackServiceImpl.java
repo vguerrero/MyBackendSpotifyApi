@@ -48,7 +48,7 @@ public class TrackServiceImpl implements TrackService {
      * @return TrackDTO
      */
     @Override
-    @CacheEvict(value = {"trackMetadata", "allTracks"}, allEntries = true)
+    @CacheEvict(value = {"trackMetadata"}, allEntries = true)
     public TrackDTO save(String isrc, String token) {
         log.info("saving track: " + isrc);
         if (isrc.isEmpty()) throw new IllegalArgumentException("isrc field is mandatory");
@@ -119,7 +119,6 @@ public class TrackServiceImpl implements TrackService {
     }
 
     @Override
-    @Cacheable(value = "allTracks", key = "#page + '-' + #size")
     public Page<TrackDTO> getAllTracks(Pageable pageable) {
         log.info("getting all tracks: " + pageable.getPageSize());
         return trackRepository.findAll(pageable)
