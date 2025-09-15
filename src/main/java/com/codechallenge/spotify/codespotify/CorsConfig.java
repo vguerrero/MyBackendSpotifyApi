@@ -13,8 +13,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:5173")
-                        .allowedOrigins("https://my-front-end-spotify-app.vercel.app")
+                        .allowedOrigins(
+                                "http://localhost:5173",
+                                "https://my-front-end-spotify-app.vercel.app"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
